@@ -1,6 +1,7 @@
 import { connect } from "mongoose";
+import 'dotenv/config';
 
-connect("mongodb+srv://andherdev82:Ckon5ALzWHbEqxOR@test-pedidos-app.kze6j.mongodb.net/?retryWrites=true&w=majority&appName=test-pedidos-app", 
+connect(process.env.MONGODB_URI, 
     { dbName: 'orders' })
     .then(() => console.log("Connected to DB"))
     .catch(() => console.log("Error to connect to DB"))

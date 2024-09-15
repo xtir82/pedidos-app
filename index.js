@@ -1,13 +1,14 @@
-import { __dirname } from "./utils.js";
+import { __dirname } from "./src/utils.js";
 import express from "express";
 import handlebars from "express-handlebars";
 import morgan from "morgan";
-import "./database.js";
+import "./src/database.js";
+import 'dotenv/config';
 
-import Orders from './routes/orders.router.js';
+import Orders from './src/routes/orders.router.js';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 3000;
 
 //Middleware
 app.use(express.json());
