@@ -19,6 +19,10 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/new_orders', async (req, res) => {
+    connect(process.env.MONGODB_URI, 
+        { dbName: 'orders' })
+        .then(() => console.log("Connected to DB"))
+        .catch(() => console.log("Error to connect to DB"))
     try{
         res.render("new_orders")
     } catch (error) {
@@ -27,8 +31,13 @@ router.get('/new_orders', async (req, res) => {
 })
 
 router.get('/test', async (req, res) => {
+    connect(process.env.MONGODB_URI, 
+        { dbName: 'orders' })
+        .then(() => console.log("Connected to DB"))
+        .catch(() => console.log("Error to connect to DB"))
     try{
         res.render("test")
+        disconnect(process.env.MONGODB_URI, { dbName: 'orders' })
     } catch (error) {
         res.status(500).send("Server Error")
     }
@@ -39,6 +48,7 @@ router.post('/', async (req, res) => {
     const newOrder = new ordersModel({ date, description, customer_name, ammount, status });
     try {
         await newOrder.save();
+        disconnect(process.env.MONGODB_URI, { dbName: 'orders' })
         res.redirect("/orders")
     } catch (error) { 
         res.status(500).send("Server Error")
