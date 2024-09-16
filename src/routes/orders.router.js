@@ -5,7 +5,6 @@ import { connect, disconnect } from "mongoose";
 const router = Router()
 
 router.get('/', async (req, res) => {
-
     try{
         const orders = await ordersModel.find().lean();
         res.render('orders', {orders})
