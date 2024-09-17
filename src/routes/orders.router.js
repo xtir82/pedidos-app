@@ -30,7 +30,7 @@ router.get('/test', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { date, description, customer_name, ammount, status } = req.body;
+    const { date, description, customer_name, ammount, status } = await req.body;
 
     console.log(req.body);
     const newOrder = new ordersModel({ date, description, customer_name, ammount, status });
