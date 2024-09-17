@@ -1,12 +1,24 @@
 <h1>Ordenes</h1>
 
-{{#each orders}}
-    <div>
-        <p>{{date}}</p>
-        <p>{{description}}</p>
-        <p>{{customer_name}}</p>
-        <p>{{ammount}}</p>
-        <p>{{status}}</p>
-        <p>-----------</p>
-    </div>
-{{/each}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Nombre del Cliente</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+      <th scope="row">{{date}}</th>
+      <td>{{description}}</td>
+      <td>{{customer_name}}</td>
+      <td>{{ammount}}$</td>
+      <td>{{status}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
