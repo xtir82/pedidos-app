@@ -31,6 +31,8 @@ router.get('/test', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { date, description, customer_name, ammount, status } = req.body;
+
+    console.log(req.body);
     const newOrder = new ordersModel({ date, description, customer_name, ammount, status });
     try {
         await newOrder.save();
